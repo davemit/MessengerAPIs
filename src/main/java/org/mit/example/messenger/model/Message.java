@@ -30,6 +30,7 @@ public class Message {
 		this.message = message;
 		this.created = new Date();
 		this.author = author;
+		this.comments = null;
 	}
 	public long getId() {
 		return id;

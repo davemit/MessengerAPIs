@@ -2,7 +2,7 @@ package org.mit.example.messenger.resources;
 
 import java.util.List;
 
-import javax.ws.rs.BeanParam;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,9 +15,8 @@ import javax.ws.rs.core.MediaType;
 
 import org.mit.example.messenger.model.Comment;
 import org.mit.example.messenger.model.Message;
-import org.mit.example.messenger.resources.beans.MessageFilterBean;
 import org.mit.example.messenger.service.CommentService;
-import org.mit.example.messenger.service.MessageService;
+
 
 @Path("/")
 
@@ -32,6 +31,14 @@ public class CommentResource {
 		
 		return commentService.getAllComments(messageId);
 	}
+	
+	@GET
+	@Path("/{commentId}")
+	public Comment getComment(@PathParam("messageId") long messageId, @PathParam("commentId") long commentId ){
+		return commentService.getComment(messageId, commentId);
+		 
+	}
+	
 	
 	@POST
 	public Comment addComment( @PathParam("messageId") long messageId, Comment comment){
